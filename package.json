@@ -1,0 +1,31 @@
+{
+  "name": "backend_intermedio",
+  "version": "1.0.0",
+  "description": "Backend_Intermedio",
+  "main": "app.js",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cross-env": "^7.0.3",
+    "daemon": "^1.1.0",
+    "dotenv": "^16.0.2",
+    "init": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "set NODE_ENV=production node app.js",
+    "dev": "cross-env NODE_ENV=development npx nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yego0210/Backend_Intermedio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yego0210/Backend_Intermedio/issues"
+  },
+  "homepage": "https://github.com/yego0210/Backend_Intermedio#readme"
+}
