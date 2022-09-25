@@ -1,7 +1,5 @@
-const jj = 'sendStatus(200)'
-
 const sendStatus = {
-   ok: 200, // OK La solicitud ha tenido éxito
+  ok: 200, // OK La solicitud ha tenido éxito
   created: 201, // Created La solicitud ha tenido éxito y se ha creado un nuevo recurso como resultado
   noContent: 204, // No Content La solicitud ha tenido éxito pero su respuesta no tiene ningún contenido
   badRequest: 400, // Bad Request La solicitud no se pudo entender o no se pudo cumplir
@@ -22,5 +20,4 @@ const sendStatus = {
   httpVersionNotSupported: 505, // HTTP Version Not Supported El servidor no admite, o no desea admitir, la versión del protocolo HTTP utilizada en la solicitud
 };
 
-
-module.exports = sendStatus;
+module.exports = sendStatus ;

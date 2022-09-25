@@ -2,15 +2,17 @@
  'use strict' ;
 const  express  = require("express");
 const { port, env } = require("./src/config/environment");
-const{ok,created,noContent} = require("./sendStatus");
+const { ok, created, noContent } = require("./sendStatus");
+const routers = require("./src/routers");
 
 const app = express();
 require('colors');
 
 
-app.get("/", (req, res) => {
-  res.sendStatus(ok);
-});
+app.use(express.json());   // Midedleware para poder usar el body en las peticiones POST y PUT 
+app.use(express.urlencoded({ extended: false }));  // esto hace que el body sea un objeto de javascript
+/* Telling the server to use the routers.js file. */  
+app.use('/api',routers);
 
 
 
