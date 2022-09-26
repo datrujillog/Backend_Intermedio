@@ -4,22 +4,18 @@ const router = express.Router();
 
 const arr = [];
 
+
+
 router.get("/get", (req, res) => {
-    const data = {
-        ok,
-        message: "Data GET",
-        data: arr,
-    };
-    console.log(data);
-    res.sendStatus(ok);
+   const o = res.send(arr);
+    res.status(ok).json(o);
     
 });
 
 router.post("/post", (req, res) => {
     const body = req.body;
     arr.push(body);
-    res.sendStatus(created);
-    // res.status(created).json({ ok, message: "Data POST", data: arr });
+    res.status(created)
     console.log("");
     console.log("Data POST=> ", arr);
     console.log("");
