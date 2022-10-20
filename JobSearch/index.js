@@ -4,7 +4,10 @@
 const  express  = require("express");
 const { port, env } = require("./src/config/environment/environment");
 const { connection } = require("./src/config/database/db");
+
+//Importando rutas
 const users = require("./src/routers/users");
+const auth = require("./src/routers/auth");
 
 require('colors');
 const app = express();
@@ -18,6 +21,7 @@ connection();
 
 //TODO Usando las rutas 
 users(app);
+auth(app);
 
 
 
