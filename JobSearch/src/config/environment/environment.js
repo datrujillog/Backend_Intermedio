@@ -5,6 +5,7 @@ require("dotenv").config();
 module.exports = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
+  SECRET_KEY: process.env.SECRET_KEY,
   db: {
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
