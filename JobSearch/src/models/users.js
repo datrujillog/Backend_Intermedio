@@ -11,10 +11,16 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
+    },
+    role: {
+        type: String,
+        enum: ["postulante", "empleador", "admin"],
+        default: "postulante",
     },
     date: {
         type: Date,

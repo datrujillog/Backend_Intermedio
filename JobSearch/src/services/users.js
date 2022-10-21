@@ -1,14 +1,30 @@
 "use strict";
 
 const User = require("../models/users");
-const { ok, created, notFound } = require("../helpers/sendStatus");
+const { ok, created, notFound, DUPLICATE_KEY_ERRROR } = require("../helpers/sendStatus");
 
 class Users {
     constructor (app) {
         this.app = app;
-        this.ok = ok;
-        this.created = created;
-        this.notFound = notFound;
+
+    }
+
+    async getByEmail(email) {
+        try {
+ 
+            const user = await User.findOne({ email });
+            return user;
+
+        } catch (error) {
+            // const message = `The email: \" ${error.keyValue.email}\ " is already in use`;
+            const message = `ERROR ::: EL EMAIL: \" ${error.keyValue.email}\ " NO SE ENCONTRO`;
+            return {
+                error: true,
+                message,
+            };
+
+        }
+
     }
 
     async getAll() {
@@ -28,7 +44,14 @@ class Users {
 
             return user;
         } catch (error) {
-            console.log(error);
+            if (error.code === DUPLICATE_KEY_ERRROR) {
+                const message = `The email: \" ${error.keyValue.email}\ " is already in use`;
+
+                return {
+                    error: true,
+                    message,
+                };
+            }
         }
     }
 

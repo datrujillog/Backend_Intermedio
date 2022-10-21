@@ -2,6 +2,7 @@
 
 const express = require("express");
 const { ok, created, notFound } = require("../helpers/sendStatus");
+const authValidation = require("../middlewares/authValidation");
 const { count } = require("../models/users");
 const UserServices = require("../services/users");
 
@@ -11,7 +12,7 @@ function users(app) {
 
     app.use("/api/V1/users", router);
 
-    router.get("/", async (req, res) => {
+    router.get("/", authValidation, async (req, res) => {
         const users = await userSer.getAll();
         const count = users.length;
         res.status(ok).json({
@@ -23,10 +24,12 @@ function users(app) {
     router.post("/", async (req, res) => {
         const { name, email, password } = req.body;
         const user = await userSer.create({ name, email, password });
-        res.status(created).json(user);
+        res.status(created).json({
+            data:user
+        });
     });
 
-    router.put("/:d", async (req, res) => {
+    router.put("/:d",authValidation, async (req, res) => {
         const { id } = req.params;
         const body = req.body;
         const user = await userSer.update(id, body);
@@ -34,9 +37,9 @@ function users(app) {
         res.status(ok).json(user);
     });
 
-    router.delete("/:id", (req, res) => {
+    router.delete("/:id",authValidation, async (req, res) => {
         const { id } = req.params;
-        const user = userSer.delete(id);
+        const user = await userSer.delete(id);
         res.status(ok).json(user);
     });
 

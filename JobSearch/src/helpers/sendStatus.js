@@ -18,6 +18,7 @@ const sendStatus = {
   serviceUnavailable: 503, // Service Unavailable El servidor no está disponible para atender la solicitud
   gatewayTimeout: 504, // Gateway Timeout El servidor, mientras actuaba como puente de enlace o proxy, no recibió a tiempo una respuesta del servidor de origen
   httpVersionNotSupported: 505, // HTTP Version Not Supported El servidor no admite, o no desea admitir, la versión del protocolo HTTP utilizada en la solicitud
+  DUPLICATE_KEY_ERRROR: 11000, // Duplicate key
 };
 
 module.exports = sendStatus ;
