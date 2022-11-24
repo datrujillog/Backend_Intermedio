@@ -42,7 +42,9 @@ class Auth {
                 data.password = await this.#encrypt(data.password)
             }
             const userServ = new User()
+            console.log(data)
             const user = await userServ.create(data)
+            console.log('USER signuUp <1>',user)
 
             if (user.error) {
                 return user
@@ -51,7 +53,7 @@ class Auth {
             return this.#getUserData(user)
 
         } catch (error) {
-            const message = 'Error al crear el usuario'
+            const message = 'Error al crear el usuario....'
 
             return {
                 error: true,

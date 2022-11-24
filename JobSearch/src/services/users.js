@@ -40,9 +40,25 @@ class Users {
 
     async create(data) {
         try {
-            const user = await User.create(data);
+            console.log('data ',data)           
+            
+            // crear la data en el modelo User
+            const user =  new User(data);
+            console.log('user 1 ', user)
+            
+            // guardar la data en la base de datos
+            // await user.save();
+            // n guarda en la base de datos arreglar este error 
+            // return user;
 
-            return user;
+            const userr = await User.create(data)
+            console.log('user 2 ', user)
+            return userr;
+
+
+
+            // console.log('USER CREATE ',user)
+            // return user;
         } catch (error) {
             if (error.code === DUPLICATE_KEY_ERRROR) {
                 const message = `The email: \" ${error.keyValue.email}\ " is already in use`;
