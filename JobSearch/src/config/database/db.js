@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-const { db } = require("../environment/environment");
+const { db,DB_MONGO_URL } = require("../environment/environment");
 require("colors");
+
+let path = DB_MONGO_URL || `mongodb+srv://${db.user}:${db.password}@${db.host}/${db.name}?retryWrites=true&w=majority`
 
 const connection = async () => {
   try {
-    const conn = await mongoose.connect(
-      `mongodb+srv://${db.user}:${db.password}@${db.host}/${db.name}?retryWrites=true&w=majority`
+    const conn = await mongoose.connect(path
     );
     console.log("Mongo DB connected:", conn.connection.host.bgBlue.black);
   } catch (err) {

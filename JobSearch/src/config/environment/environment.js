@@ -6,6 +6,7 @@ module.exports = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
   SECRET_KEY: process.env.SECRET_KEY,
+  DB_MONGO_URL: process.env.DB_MONGO_URL,
   db: {
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
